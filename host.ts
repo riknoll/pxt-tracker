@@ -41,6 +41,9 @@ class Host {
 
     onButtonEvent(button: Button, event: ButtonEvent, callback: () => void): void {
     }
+
+    sendVoiceMessage(channel: number, message: Buffer): void {
+    }
 }
 
 let getHost: () => Host;

@@ -25,11 +25,13 @@ namespace tracker {
         public trackFocused = true;
         public scroll: ScrollState;
         public fadeStartTime = 0;
+        public player: Player;
 
         constructor(song: Song, theme: Theme) {
             this.song = song;
             this.theme = theme;
             this.scroll = new ScrollState();
+            this.player = new Player();
 
             this.registerButtonEvents();
         }
@@ -105,9 +107,9 @@ namespace tracker {
             this.drawRectWithText(0, 0, 7, "TRACKER");
             this.drawRectWithText(53, 0, 3, "", this.cursorY === 0);
             this.drawRectWithText(0, 11, 7, "BPM");
-            this.drawRectWithText(53, 11, 3, formatNumber(this.song.bpm, 3), this.cursorY === 1);
+            this.drawRectWithText(53, 11, 3, formatNumber(this.player.bpm, 3), this.cursorY === 1);
             this.drawRectWithText(0, 22, 7, "PATTERN");
-            this.drawRectWithText(53, 22, 3, formatNumber(this.song.pattern, 3), this.cursorY === 2);
+            this.drawRectWithText(53, 22, 3, formatNumber(this.player.pattern, 3), this.cursorY === 2);
 
             // info window
             drawBeveledRect(
@@ -287,7 +289,7 @@ namespace tracker {
             );
 
             printText(
-                formatNumber(this.song.playHead, 2),
+                formatNumber(this.player.playhead, 2),
                 5,
                 36,
                 this.theme.columnNoteColor

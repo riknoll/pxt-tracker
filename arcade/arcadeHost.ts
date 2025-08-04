@@ -78,6 +78,19 @@ class ArcadeHost extends Host {
 
         impl.onEvent(event === ButtonEvent.Pressed ? ControllerButtonEvent.Pressed : ControllerButtonEvent.Released, callback);
     }
+
+    sendVoiceMessage(channel: number, message: Buffer): void {
+        music.sendMonoSynthMessage(channel, message);
+    }
 }
 
 getHost = () => ArcadeHost.getInstance();
+
+namespace music {
+    //% shim=music::sendMonoSynthMessage
+    export function sendMonoSynthMessage(
+        channel: number,
+        message: Buffer
+    ) {
+    }
+}

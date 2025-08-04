@@ -1,9 +1,6 @@
 namespace tracker {
     export class Song {
         public tracks: Track[];
-        public bpm = 120;
-        public pattern = 0;
-        public playHead = 0;
 
         constructor(tracks: number, trackLength: number) {
             this.tracks = [];
